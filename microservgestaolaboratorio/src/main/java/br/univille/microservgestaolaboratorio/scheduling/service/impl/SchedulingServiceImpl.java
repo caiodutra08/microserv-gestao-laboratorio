@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.univille.microservgestaolaboratorio.scheduling.dto.SchedulingSaveDTO;
 import br.univille.microservgestaolaboratorio.scheduling.entity.SchedulingEntity;
+import br.univille.microservgestaolaboratorio.scheduling.enums.SchedulingStatus;
 import br.univille.microservgestaolaboratorio.scheduling.repository.SchedulingRepository;
 import br.univille.microservgestaolaboratorio.scheduling.service.SchedulingService;
 import br.univille.microservgestaolaboratorio.utils.SchedulingUtils;
@@ -64,6 +65,19 @@ public class SchedulingServiceImpl implements SchedulingService {
 
         return schedulingRepository.save(schedulingEntity);
 
+    }
+
+    @Override
+    public SchedulingEntity cancel(String id) {
+        var schedulingEntity = schedulingRepository.findById(id).orElse(null);
+
+        if (schedulingEntity == null) {
+            return null;
+        }
+
+        schedulingEntity.setStatus(SchedulingStatus.EXPECTED);
+
+        return schedulingRepository.save(schedulingEntity);
     }
 
 }

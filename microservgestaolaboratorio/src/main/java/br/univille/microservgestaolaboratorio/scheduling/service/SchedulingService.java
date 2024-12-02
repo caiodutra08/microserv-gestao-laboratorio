@@ -13,4 +13,6 @@ public interface SchedulingService {
     SchedulingEntity findById(String id);
 
     SchedulingEntity update(String id, SchedulingEntity scheduling);
+
+    SchedulingEntity cancel(String id);
 }

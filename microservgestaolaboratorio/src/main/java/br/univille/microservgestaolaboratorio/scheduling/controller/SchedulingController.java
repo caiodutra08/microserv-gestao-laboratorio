@@ -65,4 +65,15 @@ public class SchedulingController {
         return new ResponseEntity<SchedulingEntity>(schedulingUpdated, HttpStatus.OK);
     }
 
+
+    @PatchMapping("/{id}/cancel")
+    public ResponseEntity<SchedulingEntity> cancel(@PathVariable String id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        var schedulingCanceled = schedulingService.cancel(id);
+
+        return new ResponseEntity<SchedulingEntity>(schedulingCanceled, HttpStatus.OK);
+    }
 }
