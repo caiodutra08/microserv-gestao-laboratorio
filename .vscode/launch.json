@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservgestaolaboratorioApplication<microservgestaolaboratorio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.microservgestaolaboratorio.MicroservgestaolaboratorioApplication",
+            "projectName": "microservgestaolaboratorio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
