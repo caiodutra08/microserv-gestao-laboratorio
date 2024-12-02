@@ -1,8 +1,12 @@
 package br.univille.microservgestaolaboratorio.scheduling.entity;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.UUID;
+
+import org.springframework.data.annotation.Id;
+
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 
 import br.univille.microservgestaolaboratorio.course.entity.CourseEntity;
 import br.univille.microservgestaolaboratorio.lab.entity.LabEntity;
@@ -13,13 +17,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Container(containerName = "scheduling", autoCreateContainer = true)
 public class SchedulingEntity implements Serializable {
-  private UUID id;
+  @Id
+  @GeneratedValue
+  @PartitionKey
+  private String id;
   private LabEntity lab;
-  private Date scheduling_date;
+  private String date;
   private SchedulingStatus status;
-  private UUID id_teacher;
+  private String teacherId;
   private SubjectEntity subject;
   private CourseEntity course;
-  private Date created_at;
+  private String createdAt;
 }
